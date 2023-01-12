@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/testpipeline/entity"
-	"github.com/testpipeline/node"
+	"github.com/pipeline-prototype/entity"
+	"github.com/pipeline-prototype/node"
 	channellib "gopkg.in/eapache/channels.v1"
 )
 

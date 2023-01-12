@@ -1,4 +1,4 @@
-module github.com/testpipeline
+module github.com/pipeline-prototype
 
 go 1.19
 
