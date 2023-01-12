@@ -5,7 +5,7 @@ import (
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
-	"github.com/testpipeline/entity"
+	"github.com/pipeline-prototype/entity"
 )
 
 type testdata struct {

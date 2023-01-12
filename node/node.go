@@ -6,7 +6,8 @@ import (
 	"time"
 
 	"github.com/go-logr/logr"
-	"github.com/testpipeline/entity"
+	"github.com/pipeline-prototype/entity"
+
 	channellib "gopkg.in/eapache/channels.v1"
 )
 
