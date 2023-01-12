@@ -17,8 +17,12 @@ import (
 type Node interface {
 	InjectChannel(ch channellib.Channel, sender bool) error
 	InjectLogger(log logr.Logger)
-	GetEvent(id string) error
+	GetState() State
 	Run() error
+
+	// Fix: Does each node contain multiple events?
+	// If so, we need to store multiple events
+	GetEvent() error
 }
 
 // This is the pipeline data which is passed around inbetween nodes through channels
@@ -43,3 +47,15 @@ type Options struct {
 	Owner    string
 	Metadata map[string]string
 }
+
+// type TransformFunc[T Content] func() (T, error)
+// type TransformFunc[T any] func() (T, error)
+type State string
+
+const (
+	Inactive   State = "inactive"
+	Active     State = "active"
+	Successful State = "successful"
+	Fail       State = "fail"
+	Aborted    State = "abort"
+)

@@ -26,6 +26,7 @@ type Producer struct {
 	logr.Logger
 	Event
 	Data           interface{}
+	State          entity.State
 	sendingChannel channellib.Channel
 }
 
@@ -43,7 +44,11 @@ func (p *Producer) InjectLogger(log logr.Logger) {
 	p.Logger = log
 }
 
-func (p *Producer) GetEvent(id string) error {
+func (p *Producer) GetState() entity.State {
+	return p.State
+}
+
+func (p *Producer) GetEvent() error {
 	// TODO
 	return nil
 }
@@ -97,19 +102,28 @@ type Processor struct {
 	logr.Logger
 	Event
 	Data             interface{}
+	State            entity.State
 	sendingChannel   channellib.Channel
 	receivingChannel channellib.Channel
+
+	// Figure how to inject a transformation func which is executed
+	// while processing data
+	// transformFunc func[C Contents](data C) (C, error)
 }
 
 var _ entity.Node = &Processor{}
 
-func (p *Processor) GetEvent(id string) error {
+func (p *Processor) GetEvent() error {
 	// TODO
 	return nil
 }
 
 func (p *Processor) InjectLogger(log logr.Logger) {
 	p.Logger = log
+}
+
+func (p *Processor) GetState() entity.State {
+	return p.State
 }
 
 func (p *Processor) Run() error {
