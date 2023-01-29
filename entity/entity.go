@@ -49,7 +49,7 @@ type Options struct {
 }
 
 // type TransformFunc[T Content] func() (T, error)
-// type TransformFunc[T any] func() (T, error)
+type TransformFunc[T any] func() (T, error)
 type State string
 
 const (
